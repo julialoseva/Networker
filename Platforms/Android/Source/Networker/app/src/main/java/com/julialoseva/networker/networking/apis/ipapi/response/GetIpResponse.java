@@ -2,14 +2,14 @@ package com.julialoseva.networker.networking.apis.ipapi.response;
 
 public class GetIpResponse {
 
-    private String asNumber;
+    private String as;
 
-    public String getAsNumber() {
-        return this.asNumber;
+    public String getAs() {
+        return this.as;
     }
 
-    public void setAsNumber(String asNumber) {
-        this.asNumber = asNumber;
+    public void setAs(String as) {
+        this.as = as;
     }
 
     private String city;
@@ -52,34 +52,34 @@ public class GetIpResponse {
         this.isp = isp;
     }
 
-    private String latitude;
+    private String lat;
 
-    public String getLatitude() {
-        return this.latitude;
+    public String getLat() {
+        return this.lat;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
+    public void setLat(String lat) {
+        this.lat = lat;
     }
 
-    private String longitude;
+    private double lon;
 
-    public String getLongitude() {
-        return this.longitude;
+    public double getLon() {
+        return this.lon;
     }
 
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 
-    private String organization;
+    private String org;
 
-    public String getOrganization() {
-        return this.organization;
+    public String getOrg() {
+        return this.org;
     }
 
-    public void setOrganization(String organization) {
-        this.organization = organization;
+    public void setOrg(String org) {
+        this.org = org;
     }
 
     private String query;
@@ -90,16 +90,6 @@ public class GetIpResponse {
 
     public void setQuery(String query) {
         this.query = query;
-    }
-
-    private String ip;
-
-    public String getIp() {
-        return this.ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
     }
 
     private String region;
@@ -142,13 +132,13 @@ public class GetIpResponse {
         this.timeZone = timeZone;
     }
 
-    private String zipCode;
+    private String zip;
 
-    public String getZipCode() {
-        return this.zipCode;
+    public String getZip() {
+        return this.zip;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 }
