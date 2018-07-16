@@ -62,7 +62,10 @@ public class MainActivity extends Activity {
 
             @Override
             public void onSuccess(GetIpResponse response) {
-                ipTextView.setText(response.getQuery().toString());
+                ipTextView.setText(
+                        response.getQuery().toString()
+                );
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
