@@ -69,10 +69,10 @@ public class MainActivity extends Activity {
         );
     }
 
-    private void prepareForCurrentIpRequest() {
+    private void beforeCurrentIpRequest() {
     }
 
-    private void handleCurrentIpRequestResult(GetIpResponse response, boolean success) {
+    private void afterCurrentIpRequestResult(GetIpResponse response, boolean success) {
         if (success) {
             this.updateIpTextView(
                     response.getQuery()
@@ -91,12 +91,12 @@ public class MainActivity extends Activity {
         new IpApiClient().getIp(new IpApiClient.OnChangeListener() {
             @Override
             public void onStarted() {
-                prepareForCurrentIpRequest();
+                beforeCurrentIpRequest();
             }
 
             @Override
             public void onSuccess(GetIpResponse response) {
-                handleCurrentIpRequestResult(
+                afterCurrentIpRequestResult(
                         response,
                         true
                 );
@@ -104,7 +104,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onFailed() {
-                handleCurrentIpRequestResult(
+                afterCurrentIpRequestResult(
                         null,
                         false
                 );
