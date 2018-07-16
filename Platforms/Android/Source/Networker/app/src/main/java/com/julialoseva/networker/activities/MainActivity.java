@@ -17,26 +17,43 @@ public class MainActivity extends Activity {
 
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    private Button historyButton;
-
     private TextView ipTextView;
 
+    private Button historyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        this.initializeSwipeRefreshLayout();
+        this.initializeIpTextView();
+        this.initializeHistoryButton();
+    }
+
+    private void initializeSwipeRefreshLayout() {
         this.swipeRefreshLayout = this.findViewById(R.id.swipe_refresh_layout);
         this.swipeRefreshLayout.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
-                        updateIPAddress();
+                        updateCurrentIPAddress();
                     }
                 }
         );
+    }
 
+    private void initializeIpTextView() {
+        this.ipTextView = this.findViewById(R.id.ip_text_view);
+    }
+
+    private void updateIpTextView(String ipAddress) {
+        this.ipTextView.setText(
+                ipAddress
+        );
+    }
+
+    private void initializeHistoryButton() {
         this.historyButton = this.findViewById(R.id.history_button);
         this.historyButton.setOnClickListener(
                 new View.OnClickListener() {
@@ -50,30 +67,46 @@ public class MainActivity extends Activity {
                     }
                 }
         );
-
-        this.ipTextView = this.findViewById(R.id.ip_text_view);
     }
 
-    public void updateIPAddress() {
+    private void prepareForCurrentIpRequest() {
+    }
+
+    private void handleCurrentIpRequestResult(GetIpResponse response, boolean success) {
+        if (success) {
+            this.updateIpTextView(
+                    response.getQuery()
+            );
+            this.swipeRefreshLayout.setRefreshing(false);
+        } else {
+            Toast.makeText(
+                    this,
+                    "Error",
+                    Toast.LENGTH_LONG
+            );
+        }
+    }
+
+    private void updateCurrentIPAddress() {
         new IpApiClient().getIp(new IpApiClient.OnChangeListener() {
             @Override
             public void onStarted() {
+                prepareForCurrentIpRequest();
             }
 
             @Override
             public void onSuccess(GetIpResponse response) {
-                ipTextView.setText(
-                        response.getQuery().toString()
+                handleCurrentIpRequestResult(
+                        response,
+                        true
                 );
-                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
             public void onFailed() {
-                Toast.makeText(
-                        MainActivity.this,
-                        "Error",
-                        Toast.LENGTH_LONG
+                handleCurrentIpRequestResult(
+                        null,
+                        false
                 );
             }
         });
