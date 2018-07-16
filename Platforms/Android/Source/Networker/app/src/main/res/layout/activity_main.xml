@@ -9,6 +9,7 @@
     >
 
     <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
@@ -33,6 +34,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/ip_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -59,6 +61,7 @@
             </ScrollView>
 
             <Button
+                android:id="@+id/history_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
