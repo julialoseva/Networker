@@ -17,7 +17,10 @@ public class HistoryActivity extends Activity {
 
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("History");
+        actionBar.setTitle(
+                getResources()
+                .getString(R.string.history)
+        );
     }
 
     @Override

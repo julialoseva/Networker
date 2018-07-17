@@ -72,7 +72,10 @@ public class MainActivity extends Activity {
     }
 
     private void beforeCurrentIpRequest() {
-        updateIpTextView("Updating...");
+        updateIpTextView(
+                getResources()
+                .getString(R.string.updating)
+        );
     }
 
     private void afterCurrentIpRequestResult(GetIpResponse response, boolean success) {
@@ -84,7 +87,8 @@ public class MainActivity extends Activity {
         } else {
             Toast.makeText(
                     this,
-                    "Error",
+                    getResources()
+                    .getString(R.string.error),
                     Toast.LENGTH_LONG
             );
         }
