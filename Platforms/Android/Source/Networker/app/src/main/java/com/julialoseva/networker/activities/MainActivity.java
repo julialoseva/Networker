@@ -29,6 +29,8 @@ public class MainActivity extends Activity {
         this.initializeSwipeRefreshLayout();
         this.initializeIpTextView();
         this.initializeHistoryButton();
+
+        updateCurrentIPAddress();
     }
 
     private void initializeSwipeRefreshLayout() {
