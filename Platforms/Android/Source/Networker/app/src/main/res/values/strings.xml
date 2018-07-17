@@ -3,4 +3,5 @@
     <string name="history">History</string>
     <string name="updating">Updating...</string>
     <string name="error">Error</string>
+    <string name="instruction">Pull down \nto refresh</string>
 </resources>

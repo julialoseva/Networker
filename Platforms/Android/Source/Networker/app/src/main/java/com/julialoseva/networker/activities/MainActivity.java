@@ -19,6 +19,8 @@ public class MainActivity extends Activity {
 
     private TextView ipTextView;
 
+    private TextView instructionTextView;
+
     private Button historyButton;
 
     @Override
@@ -28,6 +30,7 @@ public class MainActivity extends Activity {
 
         this.initializeSwipeRefreshLayout();
         this.initializeIpTextView();
+        this.initializeInstructionTextView();
         this.initializeHistoryButton();
 
         updateCurrentIPAddress();
@@ -49,6 +52,14 @@ public class MainActivity extends Activity {
         this.ipTextView = this.findViewById(R.id.ip_text_view);
     }
 
+    private void initializeInstructionTextView() {
+        this.instructionTextView = this.findViewById(R.id.instruction_text_view);
+        this.instructionTextView.setText(
+                getResources()
+                .getString(R.string.instruction)
+        );
+    }
+
     private void updateIpTextView(String ipAddress) {
         this.ipTextView.setText(
                 ipAddress
@@ -57,6 +68,11 @@ public class MainActivity extends Activity {
 
     private void initializeHistoryButton() {
         this.historyButton = this.findViewById(R.id.history_button);
+        this.historyButton.setText(
+                getResources()
+                .getString(R.string.history)
+                .toUpperCase()
+        );
         this.historyButton.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
