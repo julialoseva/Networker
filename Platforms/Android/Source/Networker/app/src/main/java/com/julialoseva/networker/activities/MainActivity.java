@@ -72,6 +72,7 @@ public class MainActivity extends Activity {
     }
 
     private void beforeCurrentIpRequest() {
+        updateIpTextView("Updating...");
     }
 
     private void afterCurrentIpRequestResult(GetIpResponse response, boolean success) {
