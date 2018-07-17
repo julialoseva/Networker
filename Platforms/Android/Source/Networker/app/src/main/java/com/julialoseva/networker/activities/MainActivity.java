@@ -60,9 +60,9 @@ public class MainActivity extends Activity {
         );
     }
 
-    private void updateIpTextView(String ipAddress) {
+    private void updateIpTextView(String text) {
         this.ipTextView.setText(
-                ipAddress
+                text
         );
     }
 
