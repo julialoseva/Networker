@@ -1,3 +1,3 @@
 # Networker
 
-Mobile app for retrieving information about the current IP address.
+Mobile app that allows to retrieve information about the current IP address.
