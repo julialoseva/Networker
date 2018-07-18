@@ -1,10 +1,5 @@
 package com.julialoseva.networker.data.entity;
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import io.realm.RealmObject;
 
 public class IpAddressInformation extends RealmObject {
@@ -28,9 +23,4 @@ public class IpAddressInformation extends RealmObject {
     public void setTimeStamp(long timeStamp) {
         this.timeStamp = timeStamp;
     }
-
-    Timestamp timestamp = new Timestamp(
-            System.currentTimeMillis()
-    );
-
 }
