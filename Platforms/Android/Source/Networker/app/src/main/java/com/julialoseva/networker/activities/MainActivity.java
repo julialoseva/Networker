@@ -28,19 +28,25 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.onCreate(
+                savedInstanceState
+        );
+        setContentView(
+                R.layout.activity_main
+        );
 
         this.initializeSwipeRefreshLayout();
         this.initializeIpTextView();
         this.initializeInstructionTextView();
         this.initializeHistoryButton();
 
-        updateCurrentIPAddress();
+        this.updateCurrentIPAddress();
     }
 
     private void initializeSwipeRefreshLayout() {
-        this.swipeRefreshLayout = this.findViewById(R.id.swipe_refresh_layout);
+        this.swipeRefreshLayout = this.findViewById(
+                R.id.swipe_refresh_layout
+        );
         this.swipeRefreshLayout.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -52,14 +58,19 @@ public class MainActivity extends Activity {
     }
 
     private void initializeIpTextView() {
-        this.ipTextView = this.findViewById(R.id.ip_text_view);
+        this.ipTextView = this.findViewById(
+                R.id.ip_text_view
+        );
     }
 
     private void initializeInstructionTextView() {
-        this.instructionTextView = this.findViewById(R.id.instruction_text_view);
+        this.instructionTextView = this.findViewById(
+                R.id.instruction_text_view
+        );
         this.instructionTextView.setText(
-                getResources()
-                .getString(R.string.instruction)
+                this.getResources().getString(
+                        R.string.instruction
+                )
         );
     }
 
@@ -70,11 +81,13 @@ public class MainActivity extends Activity {
     }
 
     private void initializeHistoryButton() {
-        this.historyButton = this.findViewById(R.id.history_button);
+        this.historyButton = this.findViewById(
+                R.id.history_button
+        );
         this.historyButton.setText(
-                getResources()
-                .getString(R.string.history)
-                .toUpperCase()
+                this.getResources().getString(
+                        R.string.history
+                ).toUpperCase()
         );
         this.historyButton.setOnClickListener(
                 new View.OnClickListener() {
@@ -92,8 +105,9 @@ public class MainActivity extends Activity {
 
     private void beforeCurrentIpRequest() {
         updateIpTextView(
-                getResources()
-                .getString(R.string.updating)
+                this.getResources().getString(
+                        R.string.updating
+                )
         );
     }
 
@@ -111,8 +125,9 @@ public class MainActivity extends Activity {
         } else {
             Toast.makeText(
                     this,
-                    getResources()
-                    .getString(R.string.error),
+                    this.getResources().getString(
+                            R.string.error
+                    ),
                     Toast.LENGTH_LONG
             );
         }

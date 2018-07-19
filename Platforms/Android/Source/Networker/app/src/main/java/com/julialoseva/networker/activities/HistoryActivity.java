@@ -2,7 +2,6 @@ package com.julialoseva.networker.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -12,14 +11,19 @@ public class HistoryActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+        super.onCreate(
+                savedInstanceState
+        );
+        setContentView(
+                R.layout.activity_history
+        );
 
-        ActionBar actionBar = getActionBar();
+        final ActionBar actionBar = this.getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(
-                getResources()
-                .getString(R.string.history)
+                this.getResources().getString(
+                        R.string.history
+                )
         );
     }
 
