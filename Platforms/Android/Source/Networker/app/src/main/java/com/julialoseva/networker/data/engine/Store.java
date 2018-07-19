@@ -21,20 +21,22 @@ public class Store {
             String ip,
             long timeStamp
     ) {
-        IpAddressInformation ipAddressInformation = new IpAddressInformation();
+        IpAddressInformation ipAddressInformation = this.realm.createObject(IpAddressInformation.class);
+        ipAddressInformation.setIp(ip);
+        ipAddressInformation.setTimeStamp(timeStamp);
         return ipAddressInformation;
     }
 
     public Collection<IpAddressInformation> getAllIpAddressInformation() {
-        return this.realm.where(IpAddressInformation.class)
+        return this.realm
+                .where(IpAddressInformation.class)
                 .findAll();
     }
 
     public void removeAllIpAddressInformation() {
-        RealmResults<IpAddressInformation> results =
-                realm.where(IpAddressInformation.class)
+        RealmResults<IpAddressInformation> results = this.realm
+                .where(IpAddressInformation.class)
                 .findAll();
-
         realm.beginTransaction();
         results.deleteAllFromRealm();
         realm.commitTransaction();
