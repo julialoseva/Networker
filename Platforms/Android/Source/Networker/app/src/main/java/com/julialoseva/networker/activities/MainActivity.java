@@ -10,8 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.julialoseva.networker.R;
+import com.julialoseva.networker.data.engine.Store;
 import com.julialoseva.networker.networking.apis.ipapi.client.IpApiClient;
 import com.julialoseva.networker.networking.apis.ipapi.response.GetIpResponse;
+
+import java.util.Date;
 
 public class MainActivity extends Activity {
 
@@ -95,7 +98,12 @@ public class MainActivity extends Activity {
     }
 
     private void afterCurrentIpRequestResult(GetIpResponse response, boolean success) {
-        if (success) {
+        if (success && response != null) {
+            Store.getInstance().createIpAddressInformation(
+                    response.getQuery(),
+                    new Date().getTime()
+            );
+
             this.updateIpTextView(
                     response.getQuery()
             );
