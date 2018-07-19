@@ -4,5 +4,5 @@
     <string name="history">История</string>
     <string name="updating">Обновление...</string>
     <string name="error">Ошибка</string>
-    <string name="instruction">Сдвиньте вниз \nдля обновления</string>
+    <string name="instruction">Сдвиньте вниз\nдля обновления</string>
 </resources>
