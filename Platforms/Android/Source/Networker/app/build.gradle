@@ -28,4 +28,5 @@ dependencies {
     implementation 'com.github.julialoseva:Rainbow:1.1'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
 }
