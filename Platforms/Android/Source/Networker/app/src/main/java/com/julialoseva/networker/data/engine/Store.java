@@ -17,13 +17,19 @@ public class Store {
 
     private Realm realm;
 
+    public Store() {
+        this.realm = Realm.getDefaultInstance();
+    }
+
     public IpAddressInformation createIpAddressInformation(
             String ip,
             long timeStamp
     ) {
+        realm.beginTransaction();
         IpAddressInformation ipAddressInformation = this.realm.createObject(IpAddressInformation.class);
         ipAddressInformation.setIp(ip);
         ipAddressInformation.setTimeStamp(timeStamp);
+        realm.commitTransaction();
         return ipAddressInformation;
     }
 
