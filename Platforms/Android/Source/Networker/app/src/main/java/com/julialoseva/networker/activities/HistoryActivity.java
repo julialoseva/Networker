@@ -2,10 +2,13 @@ package com.julialoseva.networker.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.julialoseva.networker.R;
 import com.julialoseva.networker.adapters.HistoryAdapter;
@@ -83,5 +86,19 @@ public class HistoryActivity extends Activity {
         this.collectionView.setAdapter(
                 this.collectionViewAdapter
         );
+
+        RecyclerView.ItemDecoration decoration = new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                super.getItemOffsets(outRect, view, parent, state);
+                outRect.set(
+                        view.getLeft(),
+                        view.getTop(),
+                        view.getRight(),
+                        view.getBottom() + 16
+                );
+            }
+        };
+        this.collectionView.addItemDecoration(decoration);
     }
 }
