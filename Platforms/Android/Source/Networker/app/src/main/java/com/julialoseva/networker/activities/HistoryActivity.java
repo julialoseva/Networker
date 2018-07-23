@@ -68,20 +68,20 @@ public class HistoryActivity extends Activity {
     }
 
     private void initializeCollectionView() {
-        this.collectionViewLayoutManager = new LinearLayoutManager(
-                this
-        );
-
-        this.collectionViewAdapter = new HistoryAdapter(
-                this.ipAddresses
-        );
-
         this.collectionView = this.findViewById(
                 R.id.recycler_view
         );
         this.collectionView.setHasFixedSize(true);
+
+        this.collectionViewLayoutManager = new LinearLayoutManager(
+                this
+        );
         this.collectionView.setLayoutManager(
                 this.collectionViewLayoutManager
+        );
+
+        this.collectionViewAdapter = new HistoryAdapter(
+                this.ipAddresses
         );
         this.collectionView.setAdapter(
                 this.collectionViewAdapter
