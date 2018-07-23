@@ -14,6 +14,7 @@ import com.julialoseva.networker.R;
 import com.julialoseva.networker.adapters.HistoryAdapter;
 import com.julialoseva.networker.data.engine.Store;
 import com.julialoseva.networker.data.entity.IpAddressInformation;
+import com.julialoseva.networker.decorations.EqualSpacingItemDecoration;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -87,18 +88,11 @@ public class HistoryActivity extends Activity {
                 this.collectionViewAdapter
         );
 
-        RecyclerView.ItemDecoration decoration = new RecyclerView.ItemDecoration() {
-            @Override
-            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                super.getItemOffsets(outRect, view, parent, state);
-                outRect.set(
-                        view.getLeft(),
-                        view.getTop(),
-                        view.getRight(),
-                        view.getBottom() + 16
-                );
-            }
-        };
+        RecyclerView.ItemDecoration decoration = new EqualSpacingItemDecoration(
+                getResources().getDimensionPixelSize(
+                        R.dimen.item_spacing
+                )
+        );
         this.collectionView.addItemDecoration(decoration);
     }
 }
