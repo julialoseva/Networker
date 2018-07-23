@@ -7,13 +7,9 @@ import java.util.Date;
 public class DateFormatter {
 
     public String getFormattedDate(long timeStamp) {
-        PrettyTime prettyTime = new PrettyTime();
-
-        String result = prettyTime.format(
-                new Date(
-                        timeStamp
-                )
-        );
-        return result;
+        return new PrettyTime()
+                .format(
+                        new Date(timeStamp)
+                );
     }
 }
