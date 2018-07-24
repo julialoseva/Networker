@@ -8,26 +8,26 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.julialoseva.networker.R;
-import com.julialoseva.networker.data.entity.IpAddressInformation;
+import com.julialoseva.networker.data.entity.IpAddress;
 
-public class IpAddressInformationItemView extends FrameLayout {
+public class IpAddressItemView extends FrameLayout {
 
     private RelativeLayout itemLayout;
     private TextView currentIPTextView;
     private TextView providerTextView;
     private TextView timeTextView;
 
-    private IpAddressInformation ipAddressInformation;
+    private IpAddress ipAddress;
 
-    public IpAddressInformation getIpAddressInformation() {
-        return this.ipAddressInformation;
+    public IpAddress getIpAddress() {
+        return this.ipAddress;
     }
 
-    public void setIpAddressInformation(IpAddressInformation ipAddressInformation) {
-        this.ipAddressInformation = ipAddressInformation;
+    public void setIpAddress(IpAddress ipAddress) {
+        this.ipAddress = ipAddress;
     }
 
-    public IpAddressInformationItemView(@NonNull Context context) {
+    public IpAddressItemView(@NonNull Context context) {
         super(context);
 
         LayoutInflater.from(context)

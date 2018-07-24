@@ -1,6 +1,6 @@
 package com.julialoseva.networker.data.engine;
 
-import com.julialoseva.networker.data.entity.IpAddressInformation;
+import com.julialoseva.networker.data.entity.IpAddress;
 
 import java.util.Collection;
 
@@ -21,27 +21,27 @@ public class Store {
         this.realm = Realm.getDefaultInstance();
     }
 
-    public IpAddressInformation createIpAddressInformation(
+    public IpAddress createIpAddressInformation(
             String ip,
             long timeStamp
     ) {
         realm.beginTransaction();
-        IpAddressInformation ipAddressInformation = this.realm.createObject(IpAddressInformation.class);
-        ipAddressInformation.setIp(ip);
-        ipAddressInformation.setTimeStamp(timeStamp);
+        IpAddress ipAddress = this.realm.createObject(IpAddress.class);
+        ipAddress.setIp(ip);
+        ipAddress.setTimeStamp(timeStamp);
         realm.commitTransaction();
-        return ipAddressInformation;
+        return ipAddress;
     }
 
-    public Collection<IpAddressInformation> getAllIpAddressInformation() {
+    public Collection<IpAddress> getAllIpAddressInformation() {
         return this.realm
-                .where(IpAddressInformation.class)
+                .where(IpAddress.class)
                 .findAll();
     }
 
     public void removeAllIpAddressInformation() {
-        RealmResults<IpAddressInformation> results = this.realm
-                .where(IpAddressInformation.class)
+        RealmResults<IpAddress> results = this.realm
+                .where(IpAddress.class)
                 .findAll();
         realm.beginTransaction();
         results.deleteAllFromRealm();

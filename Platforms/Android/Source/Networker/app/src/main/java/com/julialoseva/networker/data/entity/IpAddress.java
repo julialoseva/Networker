@@ -2,7 +2,7 @@ package com.julialoseva.networker.data.entity;
 
 import io.realm.RealmObject;
 
-public class IpAddressInformation extends RealmObject {
+public class IpAddress extends RealmObject {
 
     private String ip;
 

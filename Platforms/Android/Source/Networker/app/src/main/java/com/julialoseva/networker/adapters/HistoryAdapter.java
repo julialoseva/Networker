@@ -5,25 +5,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.julialoseva.networker.data.entity.IpAddressInformation;
-import com.julialoseva.networker.ui.IpAddressInformationItemView;
+import com.julialoseva.networker.data.entity.IpAddress;
+import com.julialoseva.networker.ui.IpAddressItemView;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.InvalidPropertiesFormatException;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
 
-    private ArrayList<IpAddressInformation> ipAddresses;
+    private ArrayList<IpAddress> ipAddresses;
 
-    public HistoryAdapter(ArrayList<IpAddressInformation> ipAddresses) {
+    public HistoryAdapter(ArrayList<IpAddress> ipAddresses) {
         this.ipAddresses = ipAddresses;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        IpAddressInformationItemView itemView = new IpAddressInformationItemView(
+        IpAddressItemView itemView = new IpAddressItemView(
                 parent.getContext()
         );
         return new ViewHolder(
@@ -33,15 +31,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        IpAddressInformation ipAddressInformation = this.ipAddresses.get(
+        IpAddress ipAddress = this.ipAddresses.get(
                 position
         );
 
         if (holder.itemView != null) {
-            if (holder.itemView instanceof IpAddressInformationItemView) {
-                IpAddressInformationItemView itemView = (IpAddressInformationItemView) holder.itemView;
-                itemView.setIpAddressInformation(
-                        ipAddressInformation
+            if (holder.itemView instanceof IpAddressItemView) {
+                IpAddressItemView itemView = (IpAddressItemView) holder.itemView;
+                itemView.setIpAddress(
+                        ipAddress
                 );
             }
         }

@@ -2,22 +2,18 @@ package com.julialoseva.networker.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.julialoseva.networker.R;
 import com.julialoseva.networker.adapters.HistoryAdapter;
 import com.julialoseva.networker.data.engine.Store;
-import com.julialoseva.networker.data.entity.IpAddressInformation;
+import com.julialoseva.networker.data.entity.IpAddress;
 import com.julialoseva.networker.decorations.EqualSpacingItemDecoration;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class HistoryActivity extends Activity {
 
@@ -27,7 +23,7 @@ public class HistoryActivity extends Activity {
 
     private RecyclerView collectionView;
 
-    private ArrayList<IpAddressInformation> ipAddresses;
+    private ArrayList<IpAddress> ipAddresses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +34,7 @@ public class HistoryActivity extends Activity {
                 R.layout.activity_history
         );
 
-        this.ipAddresses = new ArrayList<IpAddressInformation>(
+        this.ipAddresses = new ArrayList<IpAddress>(
                 Store.getInstance()
                         .getAllIpAddressInformation()
         );
