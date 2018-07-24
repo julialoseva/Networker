@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.julialoseva.networker.R;
 import com.julialoseva.networker.data.entity.IpAddress;
+import com.julialoseva.networker.tools.DateFormatter;
 
 public class IpAddressItemView extends FrameLayout {
 
@@ -25,6 +26,14 @@ public class IpAddressItemView extends FrameLayout {
 
     public void setIpAddress(IpAddress ipAddress) {
         this.ipAddress = ipAddress;
+        this.currentIPTextView.setText(ipAddress.getIp());
+        this.providerTextView.setText(ipAddress.getProviderName());
+        this.timeTextView.setText(
+                new DateFormatter()
+                        .getFormattedDate(
+                                ipAddress.getTimestamp()
+                        )
+        );
     }
 
     public IpAddressItemView(@NonNull Context context) {

@@ -14,13 +14,23 @@ public class IpAddress extends RealmObject {
         this.ip = ip;
     }
 
-    private long timeStamp;
+    private String providerName;
 
-    public long getTimeStamp() {
-        return this.timeStamp;
+    public String getProviderName() {
+        return this.providerName;
     }
 
-    public void setTimeStamp(long timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setProviderName(String providerName) {
+        this.providerName = providerName;
+    }
+
+    private long timestamp;
+
+    public long getTimestamp() {
+        return this.timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 }

@@ -23,12 +23,14 @@ public class Store {
 
     public IpAddress createIpAddressInformation(
             String ip,
+            String providerName,
             long timeStamp
     ) {
         realm.beginTransaction();
         IpAddress ipAddress = this.realm.createObject(IpAddress.class);
         ipAddress.setIp(ip);
-        ipAddress.setTimeStamp(timeStamp);
+        ipAddress.setProviderName(providerName);
+        ipAddress.setTimestamp(timeStamp);
         realm.commitTransaction();
         return ipAddress;
     }
