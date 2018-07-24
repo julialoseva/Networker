@@ -1,7 +1,9 @@
 package com.julialoseva.networker.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
@@ -135,6 +137,15 @@ public class MainActivity extends Activity {
     }
 
     private void updateCurrentIPAddress() {
+        if (!isNetworkAvailable()) {
+            swipeRefreshLayout.setRefreshing(false);
+            ipTextView.setText(
+                    getResources()
+                    .getString(R.string.connection_error)
+            );
+            return;
+        }
+
         new IpApiClient().getIp(new IpApiClient.OnChangeListener() {
             @Override
             public void onStarted() {
@@ -157,5 +168,14 @@ public class MainActivity extends Activity {
                 );
             }
         });
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) getSystemService(
+                        Context.CONNECTIVITY_SERVICE
+                );
+
+        return connectivityManager.getActiveNetworkInfo() != null;
     }
 }
