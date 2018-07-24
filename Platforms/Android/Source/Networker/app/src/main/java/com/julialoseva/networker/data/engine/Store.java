@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 public class Store {
 
@@ -35,9 +36,10 @@ public class Store {
         return ipAddress;
     }
 
-    public Collection<IpAddress> getAllIpAddressInformation() {
+    public Collection<IpAddress> getAllIpAddressesSortedByTimestamp(boolean inDescendingOrder) {
         return this.realm
                 .where(IpAddress.class)
+                .sort("timestamp", inDescendingOrder ? Sort.DESCENDING : Sort.ASCENDING)
                 .findAll();
     }
 

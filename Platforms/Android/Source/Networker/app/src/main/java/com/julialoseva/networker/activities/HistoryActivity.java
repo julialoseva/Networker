@@ -14,6 +14,7 @@ import com.julialoseva.networker.data.entity.IpAddress;
 import com.julialoseva.networker.decorations.EqualSpacingItemDecoration;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class HistoryActivity extends Activity {
 
@@ -36,7 +37,7 @@ public class HistoryActivity extends Activity {
 
         this.ipAddresses = new ArrayList<IpAddress>(
                 Store.getInstance()
-                        .getAllIpAddressInformation()
+                        .getAllIpAddressesSortedByTimestamp(true)
         );
 
         this.initializeActionBar();
