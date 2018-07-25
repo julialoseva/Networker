@@ -6,4 +6,5 @@
     <string name="error">Ошибка</string>
     <string name="instruction">Сдвиньте вниз\nдля обновления</string>
     <string name="connection_error">Ошибка подключения к интернету. Попробуйте позже</string>
+    <string name="clear">Очистить историю</string>
 </resources>
