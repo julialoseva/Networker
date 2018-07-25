@@ -54,9 +54,11 @@ public class HistoryActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
             case R.id.clear_button:
-                Store.getInstance().
-                        removeAllIpAddressInformation();
+                Store.getInstance().removeAllIpAddressInformation();
                 ipAddresses.clear();
                 collectionViewAdapter.notifyDataSetChanged();
                 return true;
