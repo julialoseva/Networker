@@ -1,20 +1,17 @@
 package com.julialoseva.networker.tools;
 
-import android.support.annotation.NonNull;
-
 import com.julialoseva.networker.data.engine.Store;
 import com.julialoseva.networker.data.entity.IpSnapshot;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 public class IpAnalyticsManager {
 
     private String[] getIpList() {
         ArrayList<String> ipAddresses = new ArrayList<>();
         Collection<IpSnapshot> ipSnapshots = Store.getInstance()
-                .getAllIpAddressesSortedByTimestamp(
+                .getAllIpSnapshotsSortedByTimestamp(
                         true
                 );
 
@@ -32,7 +29,7 @@ public class IpAnalyticsManager {
     private String[] getProvidersList() {
         ArrayList<String> providers = new ArrayList<>();
         Collection<IpSnapshot> ipSnapshots = Store.getInstance()
-                .getAllIpAddressesSortedByTimestamp(
+                .getAllIpSnapshotsSortedByTimestamp(
                         true
                 );
 

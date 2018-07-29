@@ -113,7 +113,7 @@ public class MainActivity extends Activity {
         );
     }
 
-    private void afterCurrentIpRequestResult(GetIpResponse response, boolean success) {
+    private void afterCurrentIpRequest(GetIpResponse response, boolean success) {
         if (success && response != null) {
             Store.getInstance().createIpAddressInformation(
                     response.getQuery(),
@@ -154,7 +154,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onSuccess(GetIpResponse response) {
-                afterCurrentIpRequestResult(
+                afterCurrentIpRequest(
                         response,
                         true
                 );
@@ -162,7 +162,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onFailed() {
-                afterCurrentIpRequestResult(
+                afterCurrentIpRequest(
                         null,
                         false
                 );

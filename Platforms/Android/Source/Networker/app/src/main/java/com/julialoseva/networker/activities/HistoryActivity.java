@@ -37,7 +37,7 @@ public class HistoryActivity extends Activity {
 
         this.ipSnapshots = new ArrayList<IpSnapshot>(
                 Store.getInstance()
-                        .getAllIpAddressesSortedByTimestamp(true)
+                        .getAllIpSnapshotsSortedByTimestamp(true)
         );
 
         this.initializeActionBar();
