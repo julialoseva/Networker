@@ -1,6 +1,6 @@
 package com.julialoseva.networker.data.engine;
 
-import com.julialoseva.networker.data.entity.IpAddress;
+import com.julialoseva.networker.data.entity.IpSnapshot;
 
 import java.util.Collection;
 
@@ -22,30 +22,30 @@ public class Store {
         this.realm = Realm.getDefaultInstance();
     }
 
-    public IpAddress createIpAddressInformation(
+    public IpSnapshot createIpAddressInformation(
             String ip,
             String providerName,
             long timeStamp
     ) {
         realm.beginTransaction();
-        IpAddress ipAddress = this.realm.createObject(IpAddress.class);
-        ipAddress.setIp(ip);
-        ipAddress.setProviderName(providerName);
-        ipAddress.setTimestamp(timeStamp);
+        IpSnapshot ipSnapshot = this.realm.createObject(IpSnapshot.class);
+        ipSnapshot.setIp(ip);
+        ipSnapshot.setProviderName(providerName);
+        ipSnapshot.setTimestamp(timeStamp);
         realm.commitTransaction();
-        return ipAddress;
+        return ipSnapshot;
     }
 
-    public Collection<IpAddress> getAllIpAddressesSortedByTimestamp(boolean inDescendingOrder) {
+    public Collection<IpSnapshot> getAllIpAddressesSortedByTimestamp(boolean inDescendingOrder) {
         return this.realm
-                .where(IpAddress.class)
+                .where(IpSnapshot.class)
                 .sort("timestamp", inDescendingOrder ? Sort.DESCENDING : Sort.ASCENDING)
                 .findAll();
     }
 
     public void removeAllIpAddressInformation() {
-        RealmResults<IpAddress> results = this.realm
-                .where(IpAddress.class)
+        RealmResults<IpSnapshot> results = this.realm
+                .where(IpSnapshot.class)
                 .findAll();
         realm.beginTransaction();
         results.deleteAllFromRealm();

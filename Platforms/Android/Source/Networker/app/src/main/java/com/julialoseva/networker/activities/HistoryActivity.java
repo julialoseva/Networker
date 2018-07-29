@@ -11,11 +11,10 @@ import android.view.MenuItem;
 import com.julialoseva.networker.R;
 import com.julialoseva.networker.adapters.HistoryAdapter;
 import com.julialoseva.networker.data.engine.Store;
-import com.julialoseva.networker.data.entity.IpAddress;
+import com.julialoseva.networker.data.entity.IpSnapshot;
 import com.julialoseva.networker.decorations.EqualSpacingItemDecoration;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class HistoryActivity extends Activity {
 
@@ -25,7 +24,7 @@ public class HistoryActivity extends Activity {
 
     private RecyclerView collectionView;
 
-    private ArrayList<IpAddress> ipAddresses;
+    private ArrayList<IpSnapshot> ipSnapshots;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,7 @@ public class HistoryActivity extends Activity {
                 R.layout.activity_history
         );
 
-        this.ipAddresses = new ArrayList<IpAddress>(
+        this.ipSnapshots = new ArrayList<IpSnapshot>(
                 Store.getInstance()
                         .getAllIpAddressesSortedByTimestamp(true)
         );
@@ -59,7 +58,7 @@ public class HistoryActivity extends Activity {
                 return true;
             case R.id.clear_button:
                 Store.getInstance().removeAllIpAddressInformation();
-                ipAddresses.clear();
+                ipSnapshots.clear();
                 collectionViewAdapter.notifyDataSetChanged();
                 return true;
             default:
@@ -91,7 +90,7 @@ public class HistoryActivity extends Activity {
         );
 
         this.collectionViewAdapter = new HistoryAdapter(
-                this.ipAddresses
+                this.ipSnapshots
         );
         this.collectionView.setAdapter(
                 this.collectionViewAdapter

@@ -5,23 +5,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.julialoseva.networker.data.entity.IpAddress;
-import com.julialoseva.networker.ui.IpAddressItemView;
+import com.julialoseva.networker.data.entity.IpSnapshot;
+import com.julialoseva.networker.ui.IpSnapshotItemView;
 
 import java.util.ArrayList;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
 
-    private ArrayList<IpAddress> ipAddresses;
+    private ArrayList<IpSnapshot> ipSnapshots;
 
-    public HistoryAdapter(ArrayList<IpAddress> ipAddresses) {
-        this.ipAddresses = ipAddresses;
+    public HistoryAdapter(ArrayList<IpSnapshot> ipSnapshots) {
+        this.ipSnapshots = ipSnapshots;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        IpAddressItemView itemView = new IpAddressItemView(
+        IpSnapshotItemView itemView = new IpSnapshotItemView(
                 parent.getContext()
         );
         return new ViewHolder(
@@ -31,15 +31,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        IpAddress ipAddress = this.ipAddresses.get(
+        IpSnapshot ipSnapshot = this.ipSnapshots.get(
                 position
         );
 
         if (holder.itemView != null) {
-            if (holder.itemView instanceof IpAddressItemView) {
-                IpAddressItemView itemView = (IpAddressItemView) holder.itemView;
-                itemView.setIpAddress(
-                        ipAddress
+            if (holder.itemView instanceof IpSnapshotItemView) {
+                IpSnapshotItemView itemView = (IpSnapshotItemView) holder.itemView;
+                itemView.setIpSnapshot(
+                        ipSnapshot
                 );
             }
         }
@@ -47,7 +47,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return this.ipAddresses.size();
+        return this.ipSnapshots.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -8,40 +8,40 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.julialoseva.networker.R;
-import com.julialoseva.networker.data.entity.IpAddress;
+import com.julialoseva.networker.data.entity.IpSnapshot;
 import com.julialoseva.networker.tools.DateFormatter;
 
-public class IpAddressItemView extends FrameLayout {
+public class IpSnapshotItemView extends FrameLayout {
 
     private RelativeLayout itemLayout;
     private TextView currentIPTextView;
     private TextView providerTextView;
     private TextView timeTextView;
 
-    private IpAddress ipAddress;
+    private IpSnapshot ipSnapshot;
 
-    public IpAddress getIpAddress() {
-        return this.ipAddress;
+    public IpSnapshot getIpSnapshot() {
+        return this.ipSnapshot;
     }
 
-    public void setIpAddress(IpAddress ipAddress) {
-        this.ipAddress = ipAddress;
-        this.currentIPTextView.setText(ipAddress.getIp());
-        this.providerTextView.setText(ipAddress.getProviderName());
+    public void setIpSnapshot(IpSnapshot ipSnapshot) {
+        this.ipSnapshot = ipSnapshot;
+        this.currentIPTextView.setText(ipSnapshot.getIp());
+        this.providerTextView.setText(ipSnapshot.getProviderName());
         this.timeTextView.setText(
                 new DateFormatter()
                         .getFormattedDate(
-                                ipAddress.getTimestamp()
+                                ipSnapshot.getTimestamp()
                         )
         );
     }
 
-    public IpAddressItemView(@NonNull Context context) {
+    public IpSnapshotItemView(@NonNull Context context) {
         super(context);
 
         LayoutInflater.from(context)
                 .inflate(
-                        R.layout.item_ip_address_information,
+                        R.layout.item_ip_snapshot,
                         this
                 );
 
