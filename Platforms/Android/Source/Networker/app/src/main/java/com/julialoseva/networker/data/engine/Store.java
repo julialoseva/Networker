@@ -2,6 +2,7 @@ package com.julialoseva.networker.data.engine;
 
 import com.julialoseva.networker.data.entity.IpSnapshot;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import io.realm.Realm;
@@ -22,6 +23,13 @@ public class Store {
         this.realm = Realm.getDefaultInstance();
     }
 
+    public Collection<IpSnapshot> getAllIpSnapshotsSortedByTimestamp(boolean inDescendingOrder) {
+        return this.realm
+                .where(IpSnapshot.class)
+                .sort("timestamp", inDescendingOrder ? Sort.DESCENDING : Sort.ASCENDING)
+                .findAll();
+    }
+
     public IpSnapshot createIpAddressInformation(
             String ip,
             String providerName,
@@ -36,13 +44,6 @@ public class Store {
         return ipSnapshot;
     }
 
-    public Collection<IpSnapshot> getAllIpAddressesSortedByTimestamp(boolean inDescendingOrder) {
-        return this.realm
-                .where(IpSnapshot.class)
-                .sort("timestamp", inDescendingOrder ? Sort.DESCENDING : Sort.ASCENDING)
-                .findAll();
-    }
-
     public void removeAllIpAddressInformation() {
         RealmResults<IpSnapshot> results = this.realm
                 .where(IpSnapshot.class)
@@ -50,5 +51,43 @@ public class Store {
         realm.beginTransaction();
         results.deleteAllFromRealm();
         realm.commitTransaction();
+    }
+
+    public IpSnapshot[] getSnapshotsByIp(String ip) {
+        Collection<IpSnapshot> allSnapshots = this.realm
+                .where(IpSnapshot.class)
+                .findAll();
+
+        ArrayList<IpSnapshot> filteredSnapshots = new ArrayList<>();
+        for (IpSnapshot ipSnapshot : allSnapshots) {
+            if (ipSnapshot.getIp() == ip) {
+                filteredSnapshots.add(
+                        ipSnapshot
+                );
+            }
+        }
+
+        return filteredSnapshots.toArray(
+                new IpSnapshot[] {}
+        );
+    }
+
+    public IpSnapshot[] getSnapshotsByProvider(String provider) {
+        Collection<IpSnapshot> allSnapshots = this.realm
+                .where(IpSnapshot.class)
+                .findAll();
+
+        ArrayList<IpSnapshot> filteredSnapshots = new ArrayList<>();
+        for (IpSnapshot ipSnapshot : allSnapshots) {
+            if (ipSnapshot.getProviderName() == provider) {
+                filteredSnapshots.add(
+                        ipSnapshot
+                );
+            }
+        }
+
+        return filteredSnapshots.toArray(
+                new IpSnapshot[] {}
+        );
     }
 }
